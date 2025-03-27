@@ -63,10 +63,10 @@ namespace Programming_technologies_6
             public static Color MixColor(Color color1, Color color2, float k)
             {
                 return Color.FromArgb(
-                    (int)(color2.A * k + color1.A * (1 - k)),
-                    (int)(color2.R * k + color1.R * (1 - k)),
-                    (int)(color2.G * k + color1.G * (1 - k)),
-                    (int)(color2.B * k + color1.B * (1 - k))
+                    Math.Max(0, Math.Min(255, (int)(color2.A * k + color1.A * (1 - k)))),
+                    Math.Max(0, Math.Min(255, (int)(color2.R * k + color1.R * (1 - k)))),
+                    Math.Max(0, Math.Min(255, (int)(color2.G * k + color1.G * (1 - k)))),
+                    Math.Max(0, Math.Min(255, (int)(color2.B * k + color1.B * (1 - k))))
                 );
             }
 

@@ -14,7 +14,7 @@ namespace Programming_technologies_6
 {
     public partial class Form1 : Form
     {
-        // собственно список, пока пустой
+        List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
 
         public Form1()
@@ -22,32 +22,20 @@ namespace Programming_technologies_6
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-            emitter = new TopEmitter
+            this.emitter = new Emitter // создаю эмиттер и привязываю его к полю emitter
             {
-                Width = picDisplay.Width,
-                GravitationY = 0.25f
+                Direction = 0,
+                Spreading = 10,
+                SpeedMin = 10,
+                SpeedMax = 10,
+                ColorFrom = Color.Gold,
+                ColorTo = Color.Red,
+                ParticlesPerTick = 10,
+                X = picDisplay.Width / 2,
+                Y = picDisplay.Height / 2,
             };
 
-            // гравитон
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.25),
-                Y = picDisplay.Height / 2
-            });
-
-            // в центре антигравитон
-            emitter.impactPoints.Add(new AntiGravityPoint
-            {
-                X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2
-            });
-
-            // снова гравитон
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.75),
-                Y = picDisplay.Height / 2
-            });
+            emitters.Add(this.emitter);
         }
 
 
